@@ -1,0 +1,171 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anniversary Surprise</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    body, html {
+      height: 100%;
+      background: url('ดีไซน์ที่ยังไม่ได้ตั้งชื่อ (8).png') center/cover no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all 1s ease;
+    }
+    .fade {
+      animation: fade 1s ease forwards;
+    }
+    @keyframes fade {
+      0% {opacity: 0; transform: scale(0.8);}
+      100% {opacity: 1; transform: scale(1);}
+    }
+    .container, .menu, .note, .gallery {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+    input[type="password"] {
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 1.2em;
+    }
+    button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  font-size: 1em;
+  background-color: #ff6f91;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(255, 111, 145, 0.4);
+}
+
+button:active {
+  transform: scale(0.97);
+  box-shadow: 0 4px 8px rgba(255, 111, 145, 0.2);
+}
+
+    .menu button {
+      display: block;
+      width: 200px;
+      margin: 10px auto;
+      background-color: #f06292;
+    }
+    .note img {
+      width: 100%;
+      max-width: 400px;
+    }
+    .gallery {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: url('ดีไซน์ที่ยังไม่ได้ตั้งชื่อ (8).png') center/cover no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.gallery h1 {
+  color: white;
+  font-size: 2em;
+  background: rgba(0,0,0,0.5);
+  padding: 10px 20px;
+  border-radius: 15px;
+  margin-top: 20px;
+}
+
+.video-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.back-button {
+  margin-bottom: 20px;
+}
+.back-button button {
+  padding: 10px 20px;
+  font-size: 1em;
+  background-color: #ff6f91;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+  </style>
+</head>
+<body>
+  <div class="container fade" id="login">
+    <h2>Anniversary Password</h2>
+    <input type="password" id="code" placeholder="Enter code" />
+    <br />
+    <button onclick="checkCode()">GO</button>
+  </div>
+
+  <div class="menu fade" id="menu" style="display:none;">
+    <h2>Happy Anniversary❤️</h2>
+    <button onclick="goTo('note')">จดหมายมาฝาก</button>
+    <button onclick="goTo('gallery')">ความทรงจำ</button>
+    <button onclick="goTo('login')">Back</button>
+  </div>
+
+  <div class="note fade" id="note" style="display:none;">
+    <h1>จดหมายมาส่งค้าบ💌</h1>
+    <img src="Pink Simple Romantic Cute Cat Valentine Love Letter.png" alt="Love Note" />
+    
+    <button onclick="goTo('menu')">Back</button>
+  </div>
+
+  <div class="gallery fade" id="gallery" style="display:none;">
+    <h1>THANK YOU EVERYTHING❤️</h1>
+    <div class="video-container">
+      <video src="0601(2).mp4" width="300" controls poster="HIHI.png"></video>
+    </div>
+    <div class="back-button">
+      <button onclick="goTo('menu')">Back</button>
+    </div>
+  </div>
+  
+
+  <script>
+    function checkCode() {
+      const code = document.getElementById('code').value;
+      if (code === '020525') {
+        document.getElementById('login').style.display = 'none';
+        document.getElementById('menu').style.display = 'block';
+      } else {
+        alert('รหัสไม่ถูกต้อง ลองอีกครั้งนะ');
+      }
+    }
+
+    function goTo(section) {
+      ['login', 'menu', 'note', 'gallery'].forEach(id => {
+        document.getElementById(id).style.display = 'none';
+      });
+      document.getElementById(section).style.display = 'block';
+    }
+  </script>
+</body>
+</html>
